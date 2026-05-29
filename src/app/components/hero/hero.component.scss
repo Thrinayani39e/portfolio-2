@@ -1,0 +1,135 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+}
+
+/* ── Terminal block ── */
+.term-block { max-width: 800px; }
+
+/* ── Cmd blocks ── */
+.cmd-block { margin-bottom: 22px; &:last-child { margin-bottom: 0; } }
+
+.output-block {
+  padding: 10px 0 0 22px;
+  animation: fade-slide 0.3s ease;
+}
+
+@keyframes fade-slide {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Name with glitch ── */
+.out-name {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  position: relative;
+  display: inline-block;
+
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    pointer-events: none;
+  }
+
+  &::before {
+    color: var(--cyan);
+    animation: glitch-1 4.5s infinite steps(1);
+    opacity: 0.65;
+  }
+
+  &::after {
+    color: var(--red);
+    animation: glitch-2 4.5s infinite steps(1);
+    opacity: 0.65;
+  }
+}
+
+.out-meta {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-top: 5px;
+  line-height: 1.7;
+}
+
+/* ── Role line ── */
+.role-line {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  .typed-role { color: var(--orange); }
+  .c-string   { color: var(--orange); }
+}
+
+/* ── Stats ── */
+.stats-block { display: flex; flex-direction: column; gap: 5px; }
+
+.stat-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.84rem;
+}
+
+.stat-check { color: var(--green); text-shadow: var(--glow-green); }
+.stat-value { color: var(--green); font-weight: 700; min-width: 38px; }
+.stat-label { color: var(--text-muted); }
+
+/* ── Actions ── */
+.actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ── Trailing cursor ── */
+.trailing { margin-top: 22px; }
+
+/* ── Syntax shorthands ── */
+.c-comment { color: var(--c-comment); }
+.c-string  { color: var(--c-string); }
+.c-type    { color: var(--c-type); }
+.c-keyword { color: var(--c-keyword); }
+.c-number  { color: var(--c-number); }
+.c-punct   { color: var(--c-punct); }
+
+/* ── Badge ── */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.badge-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: var(--glow-green);
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%     { opacity: 0.3; transform: scale(0.8); }
+}
+
+@media (max-width: 640px) {
+  .out-name { font-size: 1.3rem; }
+  .role-line { font-size: 0.9rem; }
+}

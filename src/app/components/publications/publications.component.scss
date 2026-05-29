@@ -1,0 +1,45 @@
+.pub-list { display: flex; flex-direction: column; gap: 16px; }
+
+.pub-body { padding: 20px 22px; }
+
+/* BibTeX styling */
+.bib-type { font-size: 0.83rem; margin-bottom: 8px; }
+
+.bib-at     { color: var(--yellow); }
+.bib-entry  { color: var(--c-keyword); }
+.bib-brace  { color: var(--text-dim); }
+.bib-key    { color: var(--c-func); }
+.bib-comma  { color: var(--c-punct); }
+
+.bib-fields { margin: 0 0 10px; }
+
+.bib-field { font-size: 0.8rem; line-height: 1.85; }
+
+.bib-prop    { color: var(--c-prop); }
+.bib-eq      { color: var(--c-punct); }
+.bib-str     { color: var(--c-string); }
+.bib-num     { color: var(--c-number); }
+
+.bib-title-val { color: var(--text); font-weight: 600; }
+
+.bib-abstract {
+  display: inline;
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.77rem;
+}
+
+.bib-close { font-size: 0.83rem; margin-bottom: 16px; }
+
+.pub-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+.pub-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.pub-btn  { font-size: 0.78rem !important; }

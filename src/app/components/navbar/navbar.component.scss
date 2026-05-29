@@ -1,0 +1,112 @@
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 0;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+
+  &.scrolled {
+    background: rgba(10, 13, 18, 0.95);
+    border-color: var(--border);
+    backdrop-filter: blur(8px);
+  }
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.nav-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s;
+
+  .logo-sym { color: var(--green); }
+  &:hover { color: var(--blue); }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+}
+
+.nav-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.15s;
+
+  .nl-path { color: var(--text-muted); }
+
+  &:hover { color: var(--text); background: var(--bg-line); }
+
+  &.active {
+    color: var(--green);
+    .nl-path { color: var(--green); opacity: 0.5; }
+  }
+}
+
+.nav-gh {
+  margin-left: 8px;
+  font-size: 0.75rem !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+
+  span {
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--text-dim);
+    transition: all 0.2s ease;
+    transform-origin: center;
+  }
+
+  &.open span:nth-child(1) { transform: rotate(45deg) translate(3.5px, 3.5px); }
+  &.open span:nth-child(2) { opacity: 0; }
+  &.open span:nth-child(3) { transform: rotate(-45deg) translate(3.5px, -3.5px); }
+}
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--bg);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: -1;
+
+    &.open { opacity: 1; pointer-events: all; }
+
+    .nav-link { font-size: 1.1rem; padding: 14px 24px; }
+  }
+}

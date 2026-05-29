@@ -1,0 +1,60 @@
+<section class="section" id="about">
+  <div class="container">
+
+    <div class="term-header reveal">
+      <span class="th-comment"># get to know me</span>
+      <div class="prompt">
+        <span class="p-user">thri</span><span class="p-at">&#64;</span><span class="p-host">portfolio</span><span class="p-colon">:</span><span class="p-path">~</span><span class="p-sym">$</span>
+        <span class="p-cmd">cat </span><span class="p-arg">about.md</span>
+      </div>
+    </div>
+
+    <div class="term-block reveal delay-1">
+      <div class="term-chrome">
+        <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        <span class="chrome-title">about.md</span>
+      </div>
+      <div class="term-body about-body">
+
+        <p class="about-headline"><span class="c-string">"{{ about.headline }}"</span></p>
+
+        <hr class="about-hr">
+
+        <div class="about-paras">
+          <p class="about-para reveal" *ngFor="let p of about.paragraphs; let i = index" [class]="'delay-' + (i + 2)">
+            <span class="para-marker">›</span>
+            <span class="para-text">{{ p }}</span>
+          </p>
+        </div>
+
+        <hr class="about-hr">
+
+        <div class="about-grid">
+          <div class="about-section">
+            <p class="section-label"><span class="c-keyword">const</span> currentFocus <span class="c-punct">= [</span></p>
+            <p class="list-item" *ngFor="let f of about.currentFocus; let last = last">
+              &nbsp;&nbsp;<span class="c-string">"{{ f }}"</span><span class="c-punct" *ngIf="!last">,</span>
+            </p>
+            <p class="c-punct">]</p>
+          </div>
+
+          <div class="about-section">
+            <p class="section-label"><span class="c-keyword">const</span> funFacts <span class="c-punct">= [</span></p>
+            <p class="list-item" *ngFor="let f of about.funFacts">
+              &nbsp;&nbsp;<span class="c-comment">// </span><span class="c-type">{{ f }}</span>
+            </p>
+            <p class="c-punct">]</p>
+          </div>
+        </div>
+
+        <hr class="about-hr">
+
+        <p class="about-location">
+          <span class="c-prop">location</span><span class="c-punct"> = </span><span class="c-string">"{{ about.location }}"</span>
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+</section>

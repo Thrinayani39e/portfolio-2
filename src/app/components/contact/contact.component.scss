@@ -1,0 +1,119 @@
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 16px;
+  align-items: start;
+}
+
+/* Info */
+.info-intro {
+  font-size: 0.78rem;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.c-comment { color: var(--c-comment); }
+.c-prop    { color: var(--c-prop); }
+.c-punct   { color: var(--c-punct); }
+.c-string  { color: var(--c-string); }
+.c-keyword { color: var(--c-keyword); }
+
+.info-links { display: flex; flex-direction: column; gap: 8px; }
+
+.info-row {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  text-decoration: none;
+  padding: 4px 0;
+  transition: all 0.15s;
+  color: inherit;
+
+  .ir-key { min-width: 64px; }
+  .ir-val { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  &:not(.no-link):hover .ir-val { color: var(--cyan); text-decoration: underline; }
+  &.no-link { cursor: default; }
+}
+
+/* Form */
+.term-field {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  margin-bottom: 14px;
+  font-size: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.tf-label {
+  white-space: nowrap;
+  flex-shrink: 0;
+  color: var(--text-dim);
+}
+
+.tf-close { flex-shrink: 0; }
+
+input, textarea {
+  flex: 1;
+  min-width: 80px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-hi);
+  color: var(--orange);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  outline: none;
+  padding: 2px 6px;
+  transition: border-color 0.15s;
+
+  &::placeholder { color: var(--text-muted); font-style: italic; }
+  &:focus { border-color: var(--blue); }
+
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px var(--bg-el) inset !important;
+    -webkit-text-fill-color: var(--orange) !important;
+  }
+}
+
+textarea { resize: vertical; border: 1px solid var(--border-hi); border-radius: 3px; padding: 8px; width: 100%; }
+textarea:focus { border-color: var(--blue); }
+
+.textarea-field { flex-direction: column; gap: 4px; align-items: flex-start; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.form-row { margin-bottom: 0; }
+
+.form-action { margin-top: 18px; }
+
+.submit-prompt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .p-sym { color: var(--green); }
+}
+
+.spinner {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border: 1.5px solid rgba(10,13,18,0.4);
+  border-top-color: #0a0d12;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.status-msg {
+  font-size: 0.78rem;
+  padding: 8px 0;
+  margin-bottom: 8px;
+
+  &.success { color: var(--green); }
+  &.error   { color: var(--red); }
+}
+
+@media (max-width: 860px) { .contact-layout { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .two-col { grid-template-columns: 1fr; } }

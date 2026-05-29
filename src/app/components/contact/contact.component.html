@@ -1,0 +1,89 @@
+<section class="section" id="contact">
+  <div class="container">
+
+    <div class="term-header reveal">
+      <span class="th-comment"># get in touch</span>
+      <div class="prompt">
+        <span class="p-user">thri</span><span class="p-at">&#64;</span><span class="p-host">portfolio</span><span class="p-colon">:</span><span class="p-path">~</span><span class="p-sym">$</span>
+        <span class="p-cmd">./contact </span><span class="p-flag">--help</span>
+      </div>
+    </div>
+
+    <div class="contact-layout">
+
+      <div class="contact-info reveal reveal-left">
+        <div class="term-block">
+          <div class="term-chrome">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span class="chrome-title">contact.sh</span>
+          </div>
+          <div class="term-body">
+            <p class="info-intro c-comment">
+              # Open to Summer / Fall 2026 SWE internships<br>
+              # Backend, industrial software, AI-adjacent roles
+            </p>
+            <div class="info-links">
+              <a *ngFor="let item of contactInfo"
+                [href]="item.link || 'javascript:void(0)'"
+                [target]="item.link ? '_blank' : ''"
+                [rel]="item.link ? 'noopener noreferrer' : ''"
+                class="info-row"
+                [class.no-link]="!item.link">
+                <span class="ir-key c-prop">{{ item.label | lowercase }}</span>
+                <span class="ir-eq c-punct"> = </span>
+                <span class="ir-val c-string">"{{ item.value }}"</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap reveal reveal-right">
+        <div class="term-block">
+          <div class="term-chrome">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            <span class="chrome-title">send_message.sh</span>
+          </div>
+          <div class="term-body">
+            <form (ngSubmit)="onSubmit()" #contactFrm="ngForm">
+              <div class="form-row two-col">
+                <div class="term-field">
+                  <label class="tf-label"><span class="c-keyword">const</span> name = <span class="c-string">"</span></label>
+                  <input type="text" name="name" [(ngModel)]="form.name" placeholder="your name" required autocomplete="name">
+                  <span class="tf-close c-string">"</span>
+                </div>
+                <div class="term-field">
+                  <label class="tf-label"><span class="c-keyword">const</span> email = <span class="c-string">"</span></label>
+                  <input type="email" name="email" [(ngModel)]="form.email" placeholder="your&#64;email.com" required autocomplete="email">
+                  <span class="tf-close c-string">"</span>
+                </div>
+              </div>
+              <div class="term-field">
+                <label class="tf-label"><span class="c-keyword">const</span> subject = <span class="c-string">"</span></label>
+                <input type="text" name="subject" [(ngModel)]="form.subject" placeholder="internship / collaboration / other">
+                <span class="tf-close c-string">"</span>
+              </div>
+              <div class="term-field textarea-field">
+                <label class="tf-label"><span class="c-comment">/**</span></label>
+                <textarea name="message" [(ngModel)]="form.message" rows="5" placeholder=" * Tell me about the opportunity..." required></textarea>
+                <span class="tf-close c-comment"> */</span>
+              </div>
+              <div *ngIf="status === 'success'" class="status-msg success">✓ Message sent. I'll respond within 24h.</div>
+              <div *ngIf="status === 'error'" class="status-msg error">✗ Send failed — email me at thri9e&#64;uw.edu</div>
+              <div class="form-action">
+                <div class="prompt submit-prompt">
+                  <span class="p-sym">$</span>
+                  <button type="submit" class="btn btn-primary" [disabled]="!isValid || status === 'sending'">
+                    <span *ngIf="status === 'sending'" class="spinner"></span>
+                    {{ status === 'sending' ? 'sending...' : './send_message.sh' }}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

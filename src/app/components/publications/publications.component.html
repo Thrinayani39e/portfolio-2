@@ -1,0 +1,37 @@
+<section class="section" id="publications">
+  <div class="container">
+
+    <div class="term-header reveal">
+      <span class="th-comment"># peer-reviewed research</span>
+      <div class="prompt">
+        <span class="p-user">thri</span><span class="p-at">&#64;</span><span class="p-host">portfolio</span><span class="p-colon">:</span><span class="p-path">~</span><span class="p-sym">$</span>
+        <span class="p-cmd">find . </span><span class="p-flag">-name </span><span class="p-arg">"*.bib" </span><span class="p-flag">-exec cat</span><span class="p-cmd"> &#123;&#125; \;</span>
+      </div>
+    </div>
+
+    <div class="pub-list">
+      <div *ngFor="let pub of publications; let i = index" class="pub-entry term-block reveal" [class]="'delay-' + (i + 1)">
+        <div class="term-body pub-body">
+          <div class="bib-type">
+            <span class="bib-at">&#64;</span><span class="bib-entry">InProceedings</span><span class="bib-brace">&#123;</span><span class="bib-key">yedhoti_{{ pub.year }}_{{ i + 1 }}</span><span class="bib-comma">,</span>
+          </div>
+          <div class="bib-fields">
+            <div class="bib-field"><span class="bib-prop">  title     </span><span class="bib-eq">= </span><span class="bib-str">&#123;<span class="bib-title-val">{{ pub.title }}</span>&#125;</span><span class="bib-comma">,</span></div>
+            <div class="bib-field"><span class="bib-prop">  author    </span><span class="bib-eq">= </span><span class="bib-str">"Thrinayani Yedhoti"</span><span class="bib-comma">,</span></div>
+            <div class="bib-field"><span class="bib-prop">  booktitle </span><span class="bib-eq">= </span><span class="bib-str">"{{ pub.venue }} Conference Proceedings"</span><span class="bib-comma">,</span></div>
+            <div class="bib-field"><span class="bib-prop">  year      </span><span class="bib-eq">= </span><span class="bib-num">{{ pub.year }}</span><span class="bib-comma">,</span></div>
+            <div class="bib-field"><span class="bib-prop">  abstract  </span><span class="bib-eq">= </span><span class="bib-str bib-abstract">"{{ pub.abstract }}"</span></div>
+          </div>
+          <div class="bib-close"><span class="bib-brace">&#125;</span></div>
+          <div class="pub-actions">
+            <div class="pub-tags">
+              <span class="tag" *ngFor="let t of pub.tags">{{ t }}</span>
+            </div>
+            <a [href]="pub.github" target="_blank" rel="noopener noreferrer" class="btn btn-ghost pub-btn">→ code</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

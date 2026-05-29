@@ -1,0 +1,28 @@
+.footer {
+  padding: 28px 0 24px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+
+  a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    &:hover { color: var(--blue); }
+  }
+
+  .sep { color: var(--text-muted); opacity: 0.4; }
+}

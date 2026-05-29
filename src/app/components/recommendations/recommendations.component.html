@@ -1,0 +1,45 @@
+<section class="section" id="recommendations">
+  <div class="container">
+
+    <div class="term-header reveal">
+      <span class="th-comment"># what colleagues say</span>
+      <div class="prompt">
+        <span class="p-user">thri</span><span class="p-at">&#64;</span><span class="p-host">portfolio</span><span class="p-colon">:</span><span class="p-path">~</span><span class="p-sym">$</span>
+        <span class="p-cmd">grep </span><span class="p-flag">-i </span><span class="p-arg">"thrinayani" </span><span class="p-arg">linkedin_reviews.txt</span>
+      </div>
+      <p class="th-output-line">Found <span>{{ recommendations.length }} matches</span> — showing all</p>
+    </div>
+
+    <div class="rec-grid">
+      <div *ngFor="let rec of recommendations; let i = index" class="rec-entry term-block reveal" [class]="'delay-' + ((i % 3) + 1)">
+        <div class="term-body rec-body">
+          <div class="grep-match">
+            <span class="gm-file">linkedin.txt</span>
+            <span class="gm-sep">:</span>
+            <span class="gm-line">{{ 42 + i * 18 }}</span>
+            <span class="gm-sep">:</span>
+            <span class="gm-match">"{{ rec.relation }}"</span>
+          </div>
+          <p class="rec-text">
+            {{ isExpanded(i) ? rec.text : truncate(rec.text) }}
+            <button *ngIf="rec.text.length > 200" class="expand-btn" (click)="toggleExpand(i)">
+              {{ isExpanded(i) ? '[less]' : '[more]' }}
+            </button>
+          </p>
+          <div class="rec-author">
+            <span class="author-avatar" [class.cyan]="rec.color === 'cyan'">{{ rec.initials }}</span>
+            <div class="author-info">
+              <span class="author-name">{{ rec.author }}</span>
+              <span class="author-role">{{ rec.title }}{{ rec.company ? ' · ' + rec.company : '' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-footer reveal">
+      <a [href]="linkedinUrl" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">→ view on LinkedIn</a>
+    </div>
+
+  </div>
+</section>

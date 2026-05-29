@@ -1,0 +1,16 @@
+.skills-body { overflow-x: auto; }
+
+.json-root {
+  font-size: 0.85rem;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.j-brace  { color: var(--text-dim); }
+.j-key    { color: var(--c-prop); }
+.j-colon  { color: var(--c-punct); }
+.j-bracket{ color: var(--text-dim); }
+.j-str    { color: var(--c-string); }
+.j-comma  { color: var(--c-punct); }

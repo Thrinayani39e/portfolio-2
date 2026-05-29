@@ -1,0 +1,64 @@
+<section class="section" id="experience">
+  <div class="container">
+
+    <div class="term-header reveal">
+      <span class="th-comment"># education &amp; work history</span>
+      <div class="prompt">
+        <span class="p-user">thri</span><span class="p-at">&#64;</span><span class="p-host">portfolio</span><span class="p-colon">:</span><span class="p-path">~</span><span class="p-sym">$</span>
+        <span class="p-cmd">git log </span><span class="p-flag">--author</span><span class="p-cmd">="Thrinayani" </span><span class="p-flag">--stat</span>
+      </div>
+    </div>
+
+    <div class="term-block reveal delay-1" style="margin-bottom:16px">
+      <div class="term-chrome">
+        <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+        <span class="chrome-title">education.yaml</span>
+      </div>
+      <div class="term-body">
+        <div class="edu-yaml">
+          <div class="y-line"><span class="y-key">degree</span><span class="y-sep">: </span><span class="y-str">{{ education.degree }}</span></div>
+          <div class="y-line"><span class="y-key">school</span><span class="y-sep">: </span><span class="y-str">{{ education.school }}</span></div>
+          <div class="y-line"><span class="y-key">gpa</span><span class="y-sep">:    </span><span class="y-num">{{ education.gpa }}</span></div>
+          <div class="y-line"><span class="y-key">status</span><span class="y-sep">: </span><span class="y-kw">{{ education.expected }}</span></div>
+          <div class="y-line"><span class="y-key">note</span><span class="y-sep">:   </span><span class="y-comment"># {{ education.extra }}</span></div>
+          <div class="y-line y-list-label"><span class="y-key">coursework</span><span class="y-sep">:</span></div>
+          <div class="y-list-item" *ngFor="let c of education.courses">
+            <span class="y-dash">  - </span><span class="y-str">{{ c }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngFor="let exp of experiences; let i = index" class="commit-entry reveal" [class]="'delay-' + (i + 2)">
+      <div class="commit-hash">
+        <span class="hash-sym">commit </span>
+        <span class="hash-val">{{ exp.period }}</span>
+      </div>
+      <div class="term-block">
+        <div class="term-body exp-body">
+          <div class="exp-header">
+            <div>
+              <p class="exp-company">{{ exp.company }}</p>
+              <p class="exp-role">{{ exp.role }}</p>
+            </div>
+            <div class="exp-meta">
+              <span class="tag" [class.green]="exp.type === 'full'" [class.orange]="exp.type === 'intern'">
+                {{ exp.type === 'full' ? 'full-time' : 'internship' }}
+              </span>
+              <span class="exp-loc">{{ exp.location }}</span>
+            </div>
+          </div>
+          <div class="diff-block">
+            <p class="diff-line" *ngFor="let b of exp.bullets">
+              <span class="diff-plus">+</span> {{ b }}
+            </p>
+          </div>
+          <div class="exp-tags">
+            <span class="tag" *ngFor="let t of exp.tags">{{ t }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
