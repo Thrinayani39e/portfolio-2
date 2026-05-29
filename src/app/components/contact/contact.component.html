@@ -45,7 +45,8 @@
             <span class="chrome-title">send_message.sh</span>
           </div>
           <div class="term-body">
-            <form (ngSubmit)="onSubmit()" #contactFrm="ngForm">
+            <form (ngSubmit)="onSubmit()" #contactFrm="ngForm" name="contact" data-netlify="true">
+              <input type="hidden" name="form-name" value="contact">
               <div class="form-row two-col">
                 <div class="term-field">
                   <label class="tf-label"><span class="c-keyword">const</span> name = <span class="c-string">"</span></label>
