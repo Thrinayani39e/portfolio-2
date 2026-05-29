@@ -132,3 +132,13 @@
 .proj-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 
 .c-comment { color: var(--c-comment); }
+
+@media (max-width: 700px) {
+  .proj-body.has-image {
+    grid-template-columns: 1fr;
+  }
+
+  .proj-image-col {
+    order: -1; /* image above content on mobile */
+  }
+}
