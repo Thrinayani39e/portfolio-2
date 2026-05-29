@@ -32,6 +32,9 @@
                 view
               </a>
             </div>
+            <div class="proj-image-wrap" *ngIf="p.image">
+              <img [src]="p.image" [alt]="p.title" class="proj-image" loading="lazy">
+            </div>
             <p class="proj-desc c-comment">/* {{ p.description }} */</p>
             <div class="proj-highlights">
               <div class="hl-line" *ngFor="let h of p.highlights">

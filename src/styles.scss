@@ -40,7 +40,7 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
@@ -217,6 +217,14 @@ body {
 
     &:hover { color: var(--cyan); border-color: var(--border); }
   }
+}
+
+/* ── Panel reveals — override when panel is active (global scope needed) ── */
+.panel.active .reveal,
+.panel.active .reveal-left,
+.panel.active .reveal-right {
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /* ── Cursor ── */

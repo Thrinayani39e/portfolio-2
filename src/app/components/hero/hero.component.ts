@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HERO, OWNER } from '../../data/portfolio.data';
+import { NavigationService } from '../../services/navigation.service';
 
 @Component({
   selector: 'app-hero',
@@ -10,8 +11,11 @@ import { HERO, OWNER } from '../../data/portfolio.data';
   styleUrl: './hero.component.scss'
 })
 export class HeroComponent implements OnInit, OnDestroy {
+  private nav = inject(NavigationService);
+
   readonly owner = OWNER;
   readonly stats = HERO.stats;
+  readonly bio = HERO.bio;
 
   displayedRole = '';
   showOutput = false;
@@ -51,7 +55,6 @@ export class HeroComponent implements OnInit, OnDestroy {
         this.displayedRole = current.slice(0, this.charIndex + 1);
         this.charIndex++;
       }
-
       if (!this.isDeleting && this.charIndex === current.length) {
         this.typingTimer = setTimeout(() => { this.isDeleting = true; tick(); }, 2200);
         return;
@@ -62,11 +65,10 @@ export class HeroComponent implements OnInit, OnDestroy {
       }
       this.typingTimer = setTimeout(tick, this.isDeleting ? 45 : 95);
     };
-
     tick();
   }
 
-  scrollToNext() {
-    document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  goToAbout() {
+    this.nav.navigate('about');
   }
 }

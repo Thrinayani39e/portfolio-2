@@ -1,7 +1,8 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, inject, HostListener, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NAV_LINKS, NAV_SECTIONS } from '../../data/portfolio.data';
+import { NAV_LINKS, OWNER } from '../../data/portfolio.data';
 import { NavLink } from '../../data/portfolio.types';
+import { NavigationService } from '../../services/navigation.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,42 +11,26 @@ import { NavLink } from '../../data/portfolio.types';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent implements OnInit {
-  scrolled = false;
-  menuOpen = false;
-  activeSection = 'hero';
+export class NavbarComponent {
+  private nav = inject(NavigationService);
 
   readonly navLinks: NavLink[] = NAV_LINKS;
-  private readonly sections: string[] = NAV_SECTIONS;
+  readonly owner = OWNER;
+  readonly menuOpen = signal(false);
 
-  ngOnInit() {
-    this.checkScroll();
-  }
+  get active() { return this.nav.active(); }
 
-  @HostListener('window:scroll')
-  checkScroll() {
-    this.scrolled = window.scrollY > 40;
-    this.updateActiveSection();
-  }
-
-  private updateActiveSection() {
-    const offset = 120;
-    for (let i = this.sections.length - 1; i >= 0; i--) {
-      const el = document.getElementById(this.sections[i]);
-      if (el && el.getBoundingClientRect().top <= offset) {
-        this.activeSection = this.sections[i];
-        return;
-      }
-    }
-    this.activeSection = 'hero';
-  }
-
-  scrollTo(id: string) {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    this.menuOpen = false;
+  navigate(id: string) {
+    this.nav.navigate(id);
+    this.menuOpen.set(false);
   }
 
   toggleMenu() {
-    this.menuOpen = !this.menuOpen;
+    this.menuOpen.update(v => !v);
+  }
+
+  @HostListener('document:keydown.escape')
+  closeMenu() {
+    this.menuOpen.set(false);
   }
 }

@@ -1,8 +1,8 @@
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
   display: flex;
   align-items: center;
-  padding-top: 80px;
+  padding: 40px 0;
 }
 
 /* ── Terminal block ── */

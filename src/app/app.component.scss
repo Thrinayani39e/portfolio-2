@@ -1,6 +1,4 @@
-main { display: block; }
-
-/* ── Matrix rain canvas ── */
+/* ── Matrix rain ── */
 .matrix-bg {
   position: fixed;
   inset: 0;
@@ -8,10 +6,10 @@ main { display: block; }
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.032;
+  opacity: 0.03;
 }
 
-/* ── CRT Scanlines ── */
+/* ── Scanlines ── */
 .scanlines {
   position: fixed;
   inset: 0;
@@ -21,11 +19,50 @@ main { display: block; }
     to bottom,
     transparent 0px,
     transparent 2px,
-    rgba(0, 0, 0, 0.06) 2px,
-    rgba(0, 0, 0, 0.06) 4px
+    rgba(0,0,0,0.055) 2px,
+    rgba(0,0,0,0.055) 4px
   );
 }
 
-/* Ensure all sections appear above matrix */
-main > * { position: relative; z-index: 1; }
-app-navbar { position: relative; z-index: 100; }
+/* ── Panel host ── */
+.panels-host {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Individual panel ── */
+.panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px);
+  transition: opacity 0.32s cubic-bezier(0.16,1,0.3,1),
+              transform 0.32s cubic-bezier(0.16,1,0.3,1);
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+}
+
+/* ── Scrollable inner ── */
+.panel-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 60px; /* navbar height */
+
+  /* Custom scrollbar per panel */
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: var(--green);
+    border-radius: 2px;
+    box-shadow: 0 0 6px var(--green);
+  }
+}

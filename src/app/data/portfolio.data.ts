@@ -187,6 +187,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'Fast Marching Method',
     slug: 'fast-marching-method',
+    image: 'https://raw.githubusercontent.com/Thrinayani39e/Fast_Marching_Method_Ride_the_Wave/main/documents/proposal/surfcat.png',
     subtitle: 'Ride the Wave — Optimal Image Seamlines',
     description:
       "Outperformed OpenCV's GraphCutSeamFinder and DPSeamFinder by implementing an FMM-based seam finder. Collaborated with Lawrence Sanchez (Engineering Director, Minecraft/Microsoft).",

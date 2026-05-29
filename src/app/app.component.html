@@ -1,17 +1,57 @@
-<!-- Matrix rain -->
 <canvas class="matrix-bg" id="matrix-canvas"></canvas>
-<!-- Scanline overlay -->
 <div class="scanlines"></div>
 
 <app-navbar></app-navbar>
-<main>
-  <app-hero></app-hero>
-  <app-about></app-about>
-  <app-skills></app-skills>
-  <app-experience></app-experience>
-  <app-projects></app-projects>
-  <app-publications></app-publications>
-  <app-recommendations></app-recommendations>
-  <app-contact></app-contact>
-</main>
-<app-footer></app-footer>
+
+<div class="panels-host">
+
+  <div class="panel" [class.active]="active === 'hero'">
+    <div class="panel-scroll">
+      <app-hero></app-hero>
+    </div>
+  </div>
+
+  <div class="panel" [class.active]="active === 'about'">
+    <div class="panel-scroll">
+      <app-about></app-about>
+    </div>
+  </div>
+
+  <div class="panel" [class.active]="active === 'skills'">
+    <div class="panel-scroll">
+      <app-skills></app-skills>
+    </div>
+  </div>
+
+  <div class="panel" [class.active]="active === 'experience'">
+    <div class="panel-scroll">
+      <app-experience></app-experience>
+    </div>
+  </div>
+
+  <div class="panel" [class.active]="active === 'projects'">
+    <div class="panel-scroll">
+      <app-projects></app-projects>
+    </div>
+  </div>
+
+  <div class="panel" [class.active]="active === 'publications'">
+    <div class="panel-scroll">
+      <app-publications></app-publications>
+    </div>
+  </div>
+
+  <div class="panel" [class.active]="active === 'recommendations'">
+    <div class="panel-scroll">
+      <app-recommendations></app-recommendations>
+    </div>
+  </div>
+
+  <div class="panel" [class.active]="active === 'contact'">
+    <div class="panel-scroll">
+      <app-contact></app-contact>
+      <app-footer></app-footer>
+    </div>
+  </div>
+
+</div>
