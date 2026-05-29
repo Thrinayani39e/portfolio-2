@@ -2,7 +2,7 @@
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(10, 13, 18, 0.88);
+  background: rgba(10, 13, 18, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -32,25 +32,24 @@
   &:hover { color: var(--blue); }
 }
 
-/* Desktop links */
+/* ── Desktop nav — NO overflow scroll ── */
 .desktop-nav {
   display: flex;
   align-items: center;
   gap: 2px;
   list-style: none;
-  overflow-x: auto;
-  scrollbar-width: none;
-  &::-webkit-scrollbar { display: none; }
+  flex-wrap: nowrap;
+  overflow: visible;
 }
 
 .nav-link {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.73rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px 10px;
+  padding: 6px 9px;
   border-radius: 4px;
   transition: all 0.15s;
   white-space: nowrap;
@@ -72,13 +71,13 @@
 
 .nav-gh {
   margin-left: 6px;
-  font-size: 0.72rem !important;
-  padding: 6px 12px !important;
+  font-size: 0.7rem !important;
+  padding: 5px 10px !important;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-/* Hamburger */
+/* ── Hamburger ── */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -88,6 +87,7 @@
   cursor: pointer;
   padding: 6px;
   flex-shrink: 0;
+  z-index: 101;
 
   span {
     display: block;
@@ -105,18 +105,17 @@
   }
 }
 
-/* Mobile drawer */
+/* ── Mobile drawer — separate fixed overlay ── */
 .mobile-drawer {
   display: none;
   position: fixed;
-  top: 60px; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background: #0a0d12;
-  backdrop-filter: blur(20px);
   z-index: 99;
-  padding: 24px 20px;
+  padding: 80px 20px 24px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.22s ease;
 
   &.open {
     opacity: 1;
@@ -129,11 +128,11 @@
 .drawer-link {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
-  padding: 16px 12px;
+  padding: 15px 8px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--text-dim);
   background: none;
   border: none;
@@ -143,28 +142,32 @@
   text-decoration: none;
   transition: all 0.15s;
 
-  .dl-sym { color: var(--text-muted); width: 20px; flex-shrink: 0; }
+  .dl-sym { color: var(--text-muted); width: 22px; flex-shrink: 0; }
 
   &:hover { color: var(--text); background: var(--bg-line); }
 
   &.active {
     color: var(--green);
-    text-shadow: 0 0 8px rgba(63,185,80,0.3);
     .dl-sym { color: rgba(63,185,80,0.5); }
   }
 
-  &.drawer-gh { border-bottom: none; color: var(--blue); margin-top: 8px; }
-}
-
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  .desktop-nav {
-    /* hide lower-priority links on medium screens */
-    .nav-link:nth-child(n+5) { display: none; }
+  &.drawer-gh {
+    border-bottom: none;
+    color: var(--blue);
+    margin-top: 8px;
   }
 }
 
-@media (max-width: 700px) {
+/* ── Breakpoints ── */
+
+/* Medium: hide github button label, compress links */
+@media (max-width: 1100px) {
+  .nav-gh span { display: none; }
+  .nav-link { padding: 6px 7px; font-size: 0.68rem; }
+}
+
+/* Small desktop: switch to hamburger */
+@media (max-width: 860px) {
   .desktop-nav { display: none; }
   .hamburger   { display: flex; }
   .mobile-drawer { display: block; }
