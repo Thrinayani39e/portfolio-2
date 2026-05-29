@@ -46,5 +46,6 @@ Thumbs.db
 *.jpg
 !src/assets/*.png
 !src/assets/*.jpg
+!src/assets/*.pdf
 src/app/data/ascii-portrait.ts
 scripts/
