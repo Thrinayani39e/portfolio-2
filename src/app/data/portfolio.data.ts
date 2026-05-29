@@ -38,7 +38,7 @@ export const ABOUT = {
 export const OWNER = {
   name: 'Thrinayani Yedhoti',
   nameShort: 'TY',
-  email: 'thri9e@uw.edu',
+  email: 'thrinayaniyedhoti@gmail.com',
   phone: '+1 (425) 321-9128',
   location: 'Redmond, WA',
   visaStatus: 'F-1 CPT/OPT Eligible',
@@ -322,8 +322,8 @@ export const CONTACT_INFO: ContactItem[] = [
   {
     icon: 'mail',
     label: 'Email',
-    value: 'thri9e@uw.edu',
-    link: 'mailto:thri9e@uw.edu',
+    value: 'thrinayaniyedhoti@gmail.com',
+    link: 'mailto:thrinayaniyedhoti@gmail.com',
   },
   {
     icon: 'linkedin',

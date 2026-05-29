@@ -1,4 +1,4 @@
-import { Component, inject, HostListener, signal } from '@angular/core';
+import { Component, inject, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NAV_LINKS, OWNER } from '../../data/portfolio.data';
 import { NavLink } from '../../data/portfolio.types';
@@ -13,24 +13,15 @@ import { NavigationService } from '../../services/navigation.service';
 })
 export class NavbarComponent {
   private nav = inject(NavigationService);
-
   readonly navLinks: NavLink[] = NAV_LINKS;
   readonly owner = OWNER;
-  readonly menuOpen = signal(false);
 
-  get active() { return this.nav.active(); }
+  get active()    { return this.nav.active(); }
+  get menuOpen()  { return this.nav.menuOpen(); }
 
-  navigate(id: string) {
-    this.nav.navigate(id);
-    this.menuOpen.set(false);
-  }
-
-  toggleMenu() {
-    this.menuOpen.update(v => !v);
-  }
+  navigate(id: string) { this.nav.navigate(id); }
+  toggleMenu()         { this.nav.toggleMenu(); }
 
   @HostListener('document:keydown.escape')
-  closeMenu() {
-    this.menuOpen.set(false);
-  }
+  onEsc() { this.nav.closeMenu(); }
 }

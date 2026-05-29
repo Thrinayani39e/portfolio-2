@@ -3,48 +3,55 @@
 
 <app-navbar></app-navbar>
 
+<!-- Mobile drawer — top-level, outside navbar stacking context -->
+<div class="mobile-drawer" [class.open]="nav.menuOpen()">
+  <ul>
+    <li>
+      <button class="drawer-link" [class.active]="nav.active() === 'hero'" (click)="nav.navigate('hero')">
+        <span class="dl-sym">~/</span> home
+      </button>
+    </li>
+    <li *ngFor="let link of navLinks">
+      <button class="drawer-link" [class.active]="nav.active() === link.id" (click)="nav.navigate(link.id)">
+        <span class="dl-sym">./</span> {{ link.label.toLowerCase() }}
+      </button>
+    </li>
+    <li>
+      <a [href]="ownerGithub" target="_blank" rel="noopener noreferrer" class="drawer-link drawer-gh">
+        <span class="dl-sym">↗</span> github
+      </a>
+    </li>
+  </ul>
+</div>
+
 <div class="panels-host">
 
   <div class="panel" [class.active]="active === 'hero'">
-    <div class="panel-scroll">
-      <app-hero></app-hero>
-    </div>
+    <div class="panel-scroll"><app-hero></app-hero></div>
   </div>
 
   <div class="panel" [class.active]="active === 'about'">
-    <div class="panel-scroll">
-      <app-about></app-about>
-    </div>
+    <div class="panel-scroll"><app-about></app-about></div>
   </div>
 
   <div class="panel" [class.active]="active === 'skills'">
-    <div class="panel-scroll">
-      <app-skills></app-skills>
-    </div>
+    <div class="panel-scroll"><app-skills></app-skills></div>
   </div>
 
   <div class="panel" [class.active]="active === 'experience'">
-    <div class="panel-scroll">
-      <app-experience></app-experience>
-    </div>
+    <div class="panel-scroll"><app-experience></app-experience></div>
   </div>
 
   <div class="panel" [class.active]="active === 'projects'">
-    <div class="panel-scroll">
-      <app-projects></app-projects>
-    </div>
+    <div class="panel-scroll"><app-projects></app-projects></div>
   </div>
 
   <div class="panel" [class.active]="active === 'publications'">
-    <div class="panel-scroll">
-      <app-publications></app-publications>
-    </div>
+    <div class="panel-scroll"><app-publications></app-publications></div>
   </div>
 
   <div class="panel" [class.active]="active === 'recommendations'">
-    <div class="panel-scroll">
-      <app-recommendations></app-recommendations>
-    </div>
+    <div class="panel-scroll"><app-recommendations></app-recommendations></div>
   </div>
 
   <div class="panel" [class.active]="active === 'contact'">

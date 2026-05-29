@@ -24,6 +24,65 @@
   );
 }
 
+/* ── Mobile drawer — top-level, z-index 9000, never inside navbar stacking ── */
+.mobile-drawer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #0a0d12;
+  z-index: 9000;
+  padding: 80px 0 32px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+  overflow-y: auto;
+
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  ul { list-style: none; }
+}
+
+.drawer-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 17px 28px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  transition: all 0.15s;
+
+  .dl-sym { color: var(--text-muted); width: 24px; flex-shrink: 0; }
+
+  &:hover  { color: var(--text); background: var(--bg-line); }
+
+  &.active {
+    color: var(--green);
+    text-shadow: 0 0 8px rgba(63,185,80,0.35);
+    .dl-sym { color: rgba(63,185,80,0.45); }
+  }
+
+  &.drawer-gh {
+    border-bottom: none;
+    color: var(--blue);
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 860px) {
+  .mobile-drawer { display: block; }
+}
+
 /* ── Panel host ── */
 .panels-host {
   position: fixed;

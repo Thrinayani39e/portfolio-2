@@ -105,70 +105,13 @@
   }
 }
 
-/* ── Mobile drawer — separate fixed overlay ── */
-.mobile-drawer {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: #0a0d12;
-  z-index: 99;
-  padding: 80px 20px 24px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.22s ease;
-
-  &.open {
-    opacity: 1;
-    pointer-events: all;
-  }
-
-  ul { list-style: none; }
-}
-
-.drawer-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  padding: 15px 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.05rem;
-  color: var(--text-dim);
-  background: none;
-  border: none;
-  border-bottom: 1px solid var(--border);
-  cursor: pointer;
-  text-align: left;
-  text-decoration: none;
-  transition: all 0.15s;
-
-  .dl-sym { color: var(--text-muted); width: 22px; flex-shrink: 0; }
-
-  &:hover { color: var(--text); background: var(--bg-line); }
-
-  &.active {
-    color: var(--green);
-    .dl-sym { color: rgba(63,185,80,0.5); }
-  }
-
-  &.drawer-gh {
-    border-bottom: none;
-    color: var(--blue);
-    margin-top: 8px;
-  }
-}
-
 /* ── Breakpoints ── */
-
-/* Medium: hide github button label, compress links */
 @media (max-width: 1100px) {
-  .nav-gh span { display: none; }
-  .nav-link { padding: 6px 7px; font-size: 0.68rem; }
+  .gh-label    { display: none; }
+  .nav-link    { padding: 6px 7px; font-size: 0.68rem; }
 }
 
-/* Small desktop: switch to hamburger */
 @media (max-width: 860px) {
   .desktop-nav { display: none; }
   .hamburger   { display: flex; }
-  .mobile-drawer { display: block; }
 }
